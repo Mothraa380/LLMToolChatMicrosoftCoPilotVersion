@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boeing vs. Airbus</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #boeing-side, #airbus-side {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #boeing-side {
+            background-color: #0074D9;
+        }
+        #airbus-side {
+            background-color: #FF4136;
+        }
+        #plane-list {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .plane-name {
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="boeing-side">
+        Boeing
+    </div>
+    <div id="airbus-side">
+        Airbus
+    </div>
+    <div id="plane-list">
+        <!-- Boeing Planes -->
+        <div class="plane-name" onclick="showPlaneInfo('Boeing 747')">Boeing 747</div>
+        <div class="plane-name" onclick="showPlaneInfo('Boeing 777')">Boeing 777</div>
+        <div class="plane-name" onclick="showPlaneInfo('Boeing 787')">Boeing 787</div>
+        <!-- Airbus Planes -->
+        <div class="plane-name" onclick="showPlaneInfo('Airbus A320')">Airbus A320</div>
+        <div class="plane-name" onclick="showPlaneInfo('Airbus A380')">Airbus A380</div>
+        <div class="plane-name" onclick="showPlaneInfo('Airbus A350')">Airbus A350</div>
+        <!-- Back button -->
+        <div class="plane-name" onclick="goBack()">Back</div>
+    </div>
+    <script>
+        const boeingSide = document.getElementById('boeing-side');
+        const airbusSide = document.getElementById('airbus-side');
+        const planeList = document.getElementById('plane-list');
+        let currentPlane = '';
+
+        function showPlaneInfo(planeName) {
+            currentPlane = planeName;
+            planeList.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+            // Show basic information about the selected plane (you can customize this part)
+            // Example: alert(`Information about ${planeName}`);
+        }
+
+        function goBack() {
+            currentPlane = '';
+            planeList.style.display = 'flex';
+            document.body.style.overflow = 'auto';
+        }
+
+        boeingSide.addEventListener('click', () => {
+            boeingSide.style.backgroundColor = '#003366';
+            airbusSide.style.backgroundColor = '';
+            planeList.style.display = 'flex';
+        });
+
+        airbusSide.addEventListener('click', () => {
+            airbusSide.style.backgroundColor = '#990000';
+            boeingSide.style.backgroundColor = '';
+            planeList.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
